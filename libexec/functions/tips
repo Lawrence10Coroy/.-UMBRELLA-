@@ -1,0 +1,26 @@
+#!/usr/bin/bash
+#
+source ${HOME}/.UMBRELLA/UMBRELLA/variables
+source ${UMBRELLA}/functions
+
+  [[ $# -eq 0 ]] && {
+		printf "${W}USAGE: tips [ on | off ] For enable or disable the tips that provided to Corporacion Umbrella, will be shown when you open a new session.
+ For more help type UMBRELLA [ -h | --help ] for helpper UMBRELLA CORPORATION
+		OPTIONS:
+		on  ┆┅┅┅┅┅┅┆ Enable tips for session.
+		off ┆┅┅┅┅┅┅┆ Disable tips for session. \n\n"; }
+  [[ -n $1 ]] && {
+		case "$1" in
+			-on)
+				Tips=$(grep "echo" ${libexec}/.tips| tail -n 1)
+				sed -i "s|$Tips|echo -en \$tips|" ${libexec}/.tips
+				;;
+			-off)
+      Tips=$(grep "echo" ${libexec}/.tips| tail -n 1)
+      sed -i "s|$Tips|#echo -en \$tips |" ${libexec}/.tips
+				;;
+				*)
+      about
+			;;
+	esac
+}

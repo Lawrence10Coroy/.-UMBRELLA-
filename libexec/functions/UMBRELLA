@@ -1,0 +1,16 @@
+#!/data/data/com.termux/files/usr/bin/bash
+#
+source ${HOME}/.UMBRELLA/UMBRELLA/functions
+source ${UMBRELLA}/variables
+   [[ $# -eq 0 ]] && {
+  theme cyan
+   echo -e "\e[1mUSAGE: UMBRELLA [ -h | --help ] Help from UMBRELLA CORPORATION";
+ }
+   [[ -n $1 ]] && {
+   if [ $1 = '-h' ] || [ $1 = '--help' ]; then
+theme cyan
+     helpper;
+	 else
+		 about
+	 fi
+ }

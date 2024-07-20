@@ -1,0 +1,8 @@
+#!/data/data/com.termux/files/usr/bin/bash
+#
+source ${HOME}/.UMBRELLA/UMBRELLA/variables
+source ${UMBRELLA}/functions
+
+  [[ $# -eq 0 ]] && { USER name; }
+  [[ $1 = set ]] && { USER set; }
+  [[ $1 = new ]] && { USER New; }

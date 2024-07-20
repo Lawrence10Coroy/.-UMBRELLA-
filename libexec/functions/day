@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+#
+b_at=$(grep "alias bat" ~/../usr/etc/zshrc |tail -n 1)
+theme=Coldark-Cold
+lightb=#e0ffff
+lightf=#000000
+
+colorb=$(grep "background" ~/.termux/colors.properties | tail -n 1)
+colorf=$(grep "foreground" ~/.termux/colors.properties | tail -n 1)
+sed -i "s|$colorf|foreground = ${lightf}|" ~/.termux/colors.properties
+sed -i "s|$colorb|background = ${lightb}|" ~/.termux/colors.properties
+
+sed -i "s|$b_at|alias bat=\"bat -f --theme '${theme}'\"|" ~/../usr/etc/zshrc
+termux-reload-settings
+

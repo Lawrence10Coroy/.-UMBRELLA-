@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+#
+
+gawk -f <(curl -Ls git.io/translate) -- -shell

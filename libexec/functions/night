@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+#
+darkb=#1a1b26
+darkf=#c0caf5
+b_at=$(grep "alias bat" ~/../usr/etc/zshrc | tail -n 1)
+theme=GitHub
+colorb=$(grep "background" ~/.termux/colors.properties | tail -n 1)
+colorf=$(grep "foreground" ~/.termux/colors.properties | tail -n 1)
+sed -i "s|$colorf|foreground= ${darkf}|" ~/.termux/colors.properties
+sed -i "s|$colorb|background = ${darkb}|" ~/.termux/colors.properties
+sed -i "s|$b_at|alias bat=\"bat -f --theme '${theme}'\"|" ~/../usr/etc/zshrc
+
+
+termux-reload-settings

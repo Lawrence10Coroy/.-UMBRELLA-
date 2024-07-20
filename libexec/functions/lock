@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+#
+
+if test ! $( command -v cacademo ) >/dev/null; then
+	yes|apt install libcaca
+fi
+exec cacademo

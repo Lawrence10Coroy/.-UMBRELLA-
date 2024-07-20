@@ -1,0 +1,59 @@
+#!/usr/bin/bash
+source ${HOME}/.UMBRELLA/UMBRELLA/variables
+source ${UMBRELLA}/functions
+IFS=$'\n\t'
+
+key_exist() {
+  echo -en "\e[1;31m[☢]\e[0m You already have a key! Do you want to replace it?\n"
+  while read -p "[y/n]: " YN && [ -z $YN ]; do
+    continue
+  done
+  [[ $YN == "n" ]] || [[ $YN == "N" ]] && { echo -en "\e[1;31m[☢]\e[0m Aborting...\n";sleep 1 ;exit 1; }
+}
+agregar_key() {
+  echo -en "\e[1;92m[☢]\e[0m Add your key to $opt\n${W}"
+  while read -p " ➸➸➸> " key && [ -z $key ]; do
+    continue
+  done
+}
+set_key() {
+  varkey=$(grep $opt ${UMBRELLA}/variables)
+  if [[ $opt == "Neovim" ]]; then
+      neural_file=$(find $HOME/.config -name neural.lua)
+      [[ -z $neural_file ]] && {
+        echo -en "${R}E: \e[0mNeovim does not include the Neuarl file.\n"
+        exit 1
+      } || {
+        oldkey=$(grep "api_key" $neural_file|awk '{print $NF}'|tr -d ","|tr -d "\"")
+        sed -i "s|$oldkey|$key|" $neural_file
+      }
+  fi
+  sed -i "s|$varkey|export $opt=\"$key\"|" ${UMBRELLA}/variables
+  echo -en "\e[0;92m Key saved successfully!\e[24;0m\n"
+  }
+	theme dark
+  IA="https://platform.openai.com/account/api-keys"
+  PScan="https://numverify.com/dashboard"
+  echo -en "\e[1;92m[☢]\e[0m Get your ChatGPT key here!${W} $IA\n"
+  echo -en "\e[1;92m[☢]\e[0m Get your PhoneScan key here!${W} $PScan\n"
+  echo -en "\n\e[0;1;4mChoose the key you want to add: \e[0;24m\n"
+  select opt in ChatGPT Neovim PhoneScan List Cancel; do
+    case $opt in
+      ChatGPT|Neovim|PhoneScan)
+        [[ -z "$(eval "echo $opt")" ]] || { key_exist;}
+        agregar_key
+        set_key
+        ;;
+			List)
+				gpt=$(grep "ChatGPT" ${UMBRELLA}/variables |awk '{print $NF}'|tr "\"=" "  ")
+				n_vim=$(grep "Neovim" ${UMBRELLA}/variables |awk '{print $NF}'|tr "\"=" "  ")
+				p_scan=$(grep "PhoneScan" ${UMBRELLA}/variables |awk '{print $NF}'|tr "\"=" "  ")
+				printf "${W}${underline}\n Your list of keys is:\e[0m\n"
+				printf "${W}\n ${gpt}\n ${n_vim}\n ${p_scan}\n"
+				break
+				;;
+      Cancel)
+        exit 0
+        ;;
+    esac
+  done

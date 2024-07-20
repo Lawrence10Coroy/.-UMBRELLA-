@@ -1,0 +1,160 @@
+#!/data/data/com.termux/files/usr/bin/bash
+#This file contain all UMBRELLA functions
+source ${HOME}/.UMBRELLA/UMBRELLA/variables
+theme() {
+  [[ $1 = dark ]] && {
+  Dark="/data/data/com.termux/files/home/.UMBRELLA/UMBRELLA/BANNER/dark"
+  bash $Dark;
+  sleep 0.5; }
+  [[ $1 = red ]] && {
+  Red="/data/data/com.termux/files/home/.UMBRELLA/UMBRELLA/BANNER/red"
+  bash $Red;
+  sleep 0.5; }
+
+  [[ $1 = cyan ]] && {
+  Cyan="/data/data/com.termux/files/home/.UMBRELLA/UMBRELLA/BANNER/cyan"
+  bash $Cyan
+  sleep 0.5; }
+}
+export -f theme
+
+ctrl_c() {
+  exit 0;
+}
+export -f ctrl_c
+about() {
+	printf "${R}(⋯☣) ${W}Invalid argument, type UMBRELLA --help for helpper.\n"
+}
+export -f about
+
+COMMANDS() {
+  command -v $1 >/dev/null || { printf "$R(⋯☣)$W UMBRELLA CORPORACION need $1.$R -->${underline}$W Run apt install $2\n";exit;}
+}
+export -f COMMANDS
+
+helpper() {
+  printf "${bold}$W☣ U M B R E L L A ☣ C O R P O R A T I O N ☣$D${bold} $v (c) by LAWRENCE •‣ Somos un equipo de Seguridad ELITE. Nuestra mision es hacer la vida mas facil. Con nuestras herramientas e investigaciones deseamos brindarte las mejores tecnicas para proteger tus secretos y que tu desarrollo profecional sea la mas adecuada. En Umbrella Corporation creemos qur nada es imposible.$R\nWARNING: $D${bold} Is used  is exclusive for professionals, this would be the responsibility of the user who handled it.\n$W\nSyntax:$D${bold} COMMANDS [-args-] [-descriptions-]\n
+\n$W✲ THIS COMMANDS THERE FOR PERSONALITYON TO UMBRELLA CORPORATION ✲$D${bold}
+	       $W✲ Settings Opctions ✲
+   COMMANDS    ∵   ARGUMENTS    ∵   DESCRIPTION$D${bold}
+
+  ❉ UMBRELLA     ┄┄┄┄┄┅┅┅┅┅┅┆ -h | --help ┆┅┅┅┅┅┅┄┄┄┄┇ Help from UMBRELLA CORPORATION.
+  ❉ day | night  ┄┄┄┄┄┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┄┄┄┄┇ To quickly switch the color mode background.
+  ❉ password     ┄┄┄┄┄┅┅┅┅┅┅┆  set | new  ┆┅┅┅┅┅┅┄┄┄┄┇ Set and change password of login UMBRELLA.
+                            ┆  passwd set ┆┅┅┅┅┅┅┄┄┄┄┇ Enable/password in login.
+                            ┆  passwd new ┆┅┅┅┅┅┅┄┄┄┄┇ Get a new password.
+  ❉ keys         ┄┄┄┄┄┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┄┄┄┄┇ Use key for tools or frameworks in UMBRELLA or set apikeys.
+  ❉ user         ┄┄┄┄┄┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┄┄┄┄┇ Username.
+                            ┆   user new  ┆┅┅┅┅┅┅┄┄┄┄┇ New Username.
+                            ┆   user set  ┆┅┅┅┅┅┅┄┄┄┄┇ Set user for login.
+  ❉ theme        ┄┄┄┄┄┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┄┄┄┄┇ Themes for Umbrella Corporation can provide you.
+                            ┆ -h | --help ┆┅┅┅┅┅┅┄┄┄┄┇ For more help of themes.
+  ❉ tips         ┄┄┄┄┄┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┄┄┄┄┇ Tips that I provided to Corporacion Umbrella, will be shown when you open a new session.
+                            ┆ tips on/off ┆┅┅┅┅┅┅┄┄┄┄┇ Activate/Deactivate the tips function.
+  ❉ tools        ┄┄┄┄┄┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┄┄┄┄┇ Tools that Umbrella Corporation can provide you.
+                            ┆ -h | --help ┆┅┅┅┅┅┅┄┄┄┄┇ For more help of tools.
+  ❉ version      ┄┄┄┄┄┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┄┄┄┄┇ Show version UMBRELLA installed.
+
+  \n$W✲ THIS COMMANDS THERE FUNCTIONS TO UMBRELLA CORPORATION ✲$D${bold}
+                 $W✲ Commands ✲
+   COMMANDS             ∵           DESCRIPTION$D${bold}
+  ❉ adminfiles    ┄┄┄┄┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┄┄┄┄┇ File management of your Android.
+  ❉ ChatGPT       ┄┄┄┄┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┄┄┄┄┇ Open IA/Chatgpt.
+  ❉ lock          ┄┄┄┄┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┄┄┄┄┇  Block termux.
+  ❉ LOCALHOST     ┄┄┄┄┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┄┄┄┄┇ Show your public internet protocol.
+  ❉ omz theme     ┄┄┄┄┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┄┄┄┄┇ Change Oh-my-zsh theme.
+  ❉ tree          ┄┄┄┄┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┄┄┄┄┇ File Map/Map Display.
+  ❉ tldr          ┄┄┄┄┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┄┄┄┄┇ Command Manual/Command Usage.
+  ❉ traductor     ┄┄┄┄┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┄┄┄┄┇ Init a command line traductor.
+  ┇┄┄┄┄┄┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┄┄┄┄┇\n\n"
+}
+export -f helpper
+
+pass () {
+  [[ $1 = set  ]] && {
+      login=$(grep "pass" ${libexec}/UMBRELLA.login|tail -n 1)
+      select opt in Password Disable Exit
+      do
+        [[ $opt = Exit ]] && { exit 0; }
+        [[ $opt = Password ]] && { opt="Get"; }
+        sed -i "s|$login|pass $opt|" $libexec/UMBRELLA.login
+        break
+      done
+    }
+  [[ $1 = New ]] && {
+      while read -sp "New password: " pass && printf "\n" && [[ -z $pass ]]
+      do
+        continue
+      done
+      while read -sp "Retype new password: " pass2 && printf "\n" && [[ -z $pass2 ]]
+      do
+        continue
+      done
+      [[ $pass = $pass2 ]] && {
+        echo $pass|openssl enc -aes-256-cbc -md sha512 -a -pbkdf2 -iter 100000 \
+        -salt -pass pass:Secret@123# > $HOME/.UMBRELLA/UMBRELLA/.lawrence;
+              echo -en "\e[34mPassword to start operations in the system, saved!.\e[0m\n";
+            } || { echo -en "\e[35mERROR:\e[0m Password do noy match.\n";pass New;
+          }
+        }
+  [[ $1 = Get ]] && {
+      while read -sp "Password: " pass && [[ -z $pass ]]
+
+      do
+        continue
+      done;
+      until [[ $pass = $(cat $HOME/.UMBRELLA/UMBRELLA/.lawrence|openssl enc -aes-256-cbc -md sha512 -a -d -pbkdf2 -iter 100000  -salt -pass pass:Secret@123#) ]] && printf "\n"
+      do
+        echo -en "\e[35mERROR:\e[0m Retype the  password\n"
+        #termux-toast -b red Wrong password
+        pass Get
+      done
+      #termux-toast -b green Welcome Back $user;
+    }
+
+  [[ $1 = Disable ]] && {
+      echo "Access without pass" >>$log
+        #termux-toast -b green Welcome Back $user;
+      }
+    }
+export -f pass
+
+USER () {
+  [[ $1 = name ]] && {
+    grep "set USER" ${etc}/zshrc |awk '{printf $NF}' && printf "\n"
+  }
+  [[ $1 = set ]] && {
+    USR=$(grep "USER" ${libexec}/UMBRELLA.login|tail -n 1)
+    select opt in User Disable Exit
+    do
+      [[ $opt = Exit ]] && { exit 0; }
+      [[ $opt = User ]] && { opt="Get"; }
+      sed -i "s|$USR|USER $opt|" $libexec/UMBRELLA.login
+      break
+    done
+  }
+  [[ $1 = New ]] && {
+    U=$(grep "USER" ${etc}/zshrc|tail -n 1)
+    while read -p "New user: " User && [[ -z $User ]]
+    do
+      continue
+    done;
+    sed -i "s|$U|set USER $User|" ${etc}/zshrc
+  }
+  [[ $1 = Get ]] && {
+    echo -en "\e[1;36mplease. Type your username and password\n"
+    while read -p "Username: " user && [[ -z $user ]]
+    do
+      continue
+    done;
+    until [[ $user = $(cat ${etc}/zshrc|grep "USER"|awk '{printf $NF}') ]]
+    do
+      echo -en "\e[31mERROR. \e[0;1mUser not found!\n"
+      USER Get
+    done
+    [[ $1 = Disable ]] && {
+      echo -en"\e[1;36mWelcome to UMBRELLA CORPORATION">>$log
+    }
+  }
+}
+export -f USER

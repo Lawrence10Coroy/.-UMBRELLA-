@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+#
+
+if test ! $(command -v duf) >/dev/null; then
+	yes|pkg install duf
+fi
+  exec duf $1
+
